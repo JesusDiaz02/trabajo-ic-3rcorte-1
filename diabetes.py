@@ -179,9 +179,9 @@ print(f'Precisión: {precision}')
 recall = recall_score(y_test_out, y_pred, average=None).mean()
 print(f'Re-call: {recall}')
 
-f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+f1_score_1 = f1_score(y_test_out, y_pred, average=None).mean()
 
-print(f'f1: {f1_score}')
+print(f'f1: {f1_score_1}')
 
 # maquina soporte vectorial con validacion cruzada
 
