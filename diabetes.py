@@ -134,8 +134,9 @@ print(f'accuracy de test de entrenamiento:{knn.score(x_test,y_test)}')
 #accuracy de validacion
 print(f'accuracy de validacion:{knn.score(x_test_out,y_test_out)}')
 
-#regresion logistica con validacion cruzada
+
 # REGRESIÓN LOGÍSTICA CON VALIDACIÓN CRUZADA
+
 kfold = KFold(n_splits=10)
 
 acc_scores_train_train = []
@@ -182,25 +183,24 @@ f1_score = f1_score(y_test_out, y_pred, average=None).mean()
 
 print(f'f1: {f1_score}')
 
-
 # maquina soporte vectorial con validacion cruzada
 
 kfold = KFold(n_splits=10)
 
-acc_scores_train_train_2 = []
-acc_scores_test_train_2 = []
+acc_scores_train_train = []
+acc_scores_test_train= []
 svc = SVC(gamma='auto')
 
 for train, test in kfold.split(x, y):
     svc.fit(x_train, y_train)
-    scores_train_train_2 = svc.score(x[train], y[train])
-    scores_test_train_2 = svc.score(x[test], y[test])
-    acc_scores_train_train_2.append(scores_train_train)
-    acc_scores_test_train_2.append(scores_test_train)
+    scores_train_train = svc.score(x[train], y[train])
+    scores_test_train = svc.score(x[test], y[test])
+    acc_scores_train_train.append(scores_train_train)
+    acc_scores_test_train.append(scores_test_train)
     
 y_pred = svc.predict(x_test_out)
 
-print('*'*50)
+print('*'*60)
 print('Maquina soporte vectorial Validación cruzada')
 
 # Accuracy de Entrenamiento de Entrenamiento
@@ -219,7 +219,7 @@ print(f'Matriz de confusión: {confusion_matrix(y_test_out, y_pred)}')
 matriz_confusion = confusion_matrix(y_test_out, y_pred)
 plt.figure(figsize = (6, 6))
 sns.heatmap(matriz_confusion)
-plt.title("Mariz de confución")
+plt.title("Matriz de confución")
 
 precision = precision_score(y_test_out, y_pred, average=None).mean()
 print(f'Precisión: {precision}')
