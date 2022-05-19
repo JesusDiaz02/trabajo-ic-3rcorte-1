@@ -279,3 +279,98 @@ print(f'Re-call: {recall}')
 f1_score = f1_score(y_test_out, y_pred, average=None).mean()
 
 print(f'f1: {f1_score}')
+
+# modelo naive bayes con Validación cruzada
+
+kfold = KFold(n_splits=5)
+
+acc_scores_train_train = []
+acc_scores_test_train = []
+gnb = GaussianNB()
+
+for train, test in kfold.split(x, y):
+    gnb.fit(x_train, y_train)
+    scores_train_train = gnb.score(x[train], y[train])
+    scores_test_train = gnb.score(x[test], y[test])
+    acc_scores_train_train.append(scores_train_train)
+    acc_scores_test_train.append(scores_test_train)
+    
+y_pred = gnb.predict(x_test_out)
+
+print('*'*50)
+print('modelo naive bayes con Validación cruzada')
+
+# Accuracy de Entrenamiento de Entrenamiento
+print(f'accuracy de Entrenamiento de Entrenamiento: {np.array(acc_scores_train_train).mean()}')
+
+# Accuracy de Test de Entrenamiento
+print(f'accuracy de Test de Entrenamiento: {np.array(acc_scores_test_train).mean()}')
+
+# Accuracy de Validación
+print(f'accuracy de Validación: {gnb.score(x_test_out, y_test_out)}')
+
+
+# Matriz de confusión
+print(f'Matriz de confusión: {confusion_matrix(y_test_out, y_pred)}')
+
+matriz_confusion = confusion_matrix(y_test_out, y_pred)
+plt.figure(figsize = (6, 6))
+sns.heatmap(matriz_confusion)
+plt.title("Mariz de confución")
+
+precision = precision_score(y_test_out, y_pred, average=None).mean()
+print(f'Precisión: {precision}')
+
+recall = recall_score(y_test_out, y_pred, average=None).mean()
+print(f'Re-call: {recall}')
+
+f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+
+print(f'f1: {f1_score}')
+
+# modelo knn con validacion cruzada
+kfold = KFold(n_splits=5)
+
+acc_scores_train_train = []
+acc_scores_test_train = []
+knn = neighbors.KNeighborsClassifier()
+
+for train, test in kfold.split(x, y):
+    knn.fit(x_train, y_train)
+    scores_train_train = knn.score(x[train], y[train])
+    scores_test_train = knn.score(x[test], y[test])
+    acc_scores_train_train.append(scores_train_train)
+    acc_scores_test_train.append(scores_test_train)
+    
+y_pred = knn.predict(x_test_out)
+
+print('*'*50)
+print('modelo naive bayes con Validación cruzada')
+
+# Accuracy de Entrenamiento de Entrenamiento
+print(f'accuracy de Entrenamiento de Entrenamiento: {np.array(acc_scores_train_train).mean()}')
+
+# Accuracy de Test de Entrenamiento
+print(f'accuracy de Test de Entrenamiento: {np.array(acc_scores_test_train).mean()}')
+
+# Accuracy de Validación
+print(f'accuracy de Validación: {knn.score(x_test_out, y_test_out)}')
+
+
+# Matriz de confusión
+print(f'Matriz de confusión: {confusion_matrix(y_test_out, y_pred)}')
+
+matriz_confusion = confusion_matrix(y_test_out, y_pred)
+plt.figure(figsize = (6, 6))
+sns.heatmap(matriz_confusion)
+plt.title("Mariz de confución")
+
+precision = precision_score(y_test_out, y_pred, average=None).mean()
+print(f'Precisión: {precision}')
+
+recall = recall_score(y_test_out, y_pred, average=None).mean()
+print(f'Re-call: {recall}')
+
+f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+
+print(f'f1: {f1_score}')
