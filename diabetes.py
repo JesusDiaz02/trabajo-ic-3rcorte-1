@@ -216,20 +216,20 @@ print(f'accuracy de Validación: {svc.score(x_test_out, y_test_out)}')
 # Matriz de confusión
 print(f'Matriz de confusión: {confusion_matrix(y_test_out, y_pred)}')
 
-matriz_confusion = confusion_matrix(y_test_out, y_pred)
+matriz_confusion_2 = confusion_matrix(y_test_out, y_pred)
 plt.figure(figsize = (6, 6))
-sns.heatmap(matriz_confusion)
+sns.heatmap(matriz_confusion_2)
 plt.title("Matriz de confución")
 
-precision = precision_score(y_test_out, y_pred, average=None).mean()
-print(f'Precisión: {precision}')
+precision_2 = precision_score(y_test_out, y_pred, average=None).mean()
+print(f'Precisión: {precision_2}')
 
-recall = recall_score(y_test_out, y_pred, average=None).mean()
-print(f'Re-call: {recall}')
+recall_2 = recall_score(y_test_out, y_pred, average=None).mean()
+print(f'Re-call: {recall_2}')
 
-f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+f1_score_2 = f1_score(y_test_out, y_pred, average=None).mean()
 
-print(f'f1: {f1_score}')
+print(f'f1: {f1_score_2}')
 
 
 #Arbol de decisiones con validacion cruzada
@@ -276,9 +276,9 @@ print(f'Precisión: {precision}')
 recall = recall_score(y_test_out, y_pred, average=None).mean()
 print(f'Re-call: {recall}')
 
-f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+f1_score_3 = f1_score(y_test_out, y_pred, average=None).mean()
 
-print(f'f1: {f1_score}')
+print(f'f1: {f1_score_3}')
 
 # modelo naive bayes con Validación cruzada
 
@@ -324,9 +324,9 @@ print(f'Precisión: {precision}')
 recall = recall_score(y_test_out, y_pred, average=None).mean()
 print(f'Re-call: {recall}')
 
-f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+f1_score_4 = f1_score(y_test_out, y_pred, average=None).mean()
 
-print(f'f1: {f1_score}')
+print(f'f1: {f1_score_4}')
 
 # modelo knn con validacion cruzada
 kfold = KFold(n_splits=10)
@@ -371,6 +371,6 @@ print(f'Precisión: {precision}')
 recall = recall_score(y_test_out, y_pred, average=None).mean()
 print(f'Re-call: {recall}')
 
-f1_score = f1_score(y_test_out, y_pred, average=None).mean()
+f1_score_5 = f1_score(y_test_out, y_pred, average=None).mean()
 
-print(f'f1: {f1_score}')
+print(f'f1: {f1_score_5}')
