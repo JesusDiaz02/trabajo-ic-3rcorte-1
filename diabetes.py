@@ -134,4 +134,9 @@ print(f'accuracy de test de entrenamiento:{knn.score(x_test,y_test)}')
 #accuracy de validacion
 print(f'accuracy de validacion:{knn.score(x_test_out,y_test_out)}')
 
-#
+#regresion logistica con validacion cruzada
+kfold = KFold(n_splits=5)
+
+acc_scores_train_train =[]
+acc_score_test_train =[]
+logreg = LogisticRegression(solver='lbfgs', max_iter =7600)
